@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "053188f1-541e-4d2b-90f8-4d956ee2baa7",
+		"name": "ServiciosApiNet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27229496",
+		"_collection_link": "https://lively-eclipse-646436.postman.co/workspace/Team-Workspace~9f6eb27b-7458-40cb-8988-d918cbf51a35/collection/27229496-053188f1-541e-4d2b-90f8-4d956ee2baa7?action=share&source=collection_link&creator=27229496"
+	},
+	"item": [
+		{
+			"name": "BuscaLibro",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Prueba",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BasicPass@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7083/api/Libro/PYTHON CON APLICACIONES A LAS MATEMATICAS, INGENIERIA Y FINANZAS",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7083",
+					"path": [
+						"api",
+						"Libro",
+						"PYTHON CON APLICACIONES A LAS MATEMATICAS, INGENIERIA Y FINANZAS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModificaLibro",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Prueba",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BasicPass@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n   \"bookName\": \"PYTHON CON APLICACIONES A LAS MATEMATICAS, INGENIERIA Y FINANZAS (Libro modificado)\",\r\n   \"author\": \"David López Báez\",\r\n   \"releaseDate\": \"2017-01-01\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7083/api/Libro/PYTHON CON APLICACIONES A LAS MATEMATICAS, INGENIERIA Y FINANZAS",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7083",
+					"path": [
+						"api",
+						"Libro",
+						"PYTHON CON APLICACIONES A LAS MATEMATICAS, INGENIERIA Y FINANZAS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AgregaLibro",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Prueba",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BasicPass@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"bookName\": \"Libro ejemplo de agregado\",\r\n    \"author\": \"Eduardo Bravo\",\r\n    \"releaseDate\": \"2024-01-01\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7083/api/Libro",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7083",
+					"path": [
+						"api",
+						"Libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminaLibro",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Prueba",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BasicPass@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7083/api/Libro/Libro ejemplo de agregado",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7083",
+					"path": [
+						"api",
+						"Libro",
+						"Libro ejemplo de agregado"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
