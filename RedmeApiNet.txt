@@ -1,0 +1,112 @@
+Instrucciones ejercio Api .Net
+
+--Paquetes ocupados--
+using System.Data;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text.Json;
+using Newtonsoft.Json;
+using System.Linq.Expressions;
+
+
+--El proyecto lleva por nombre "EjercicioNet"
+--Debe ser ejecutado en version VS 2013 o superior de manera local
+
+--Consta de 4 capas
+*Models donde se almacenan los modelos necesarios para la creacion de objetos Libro y Users para auntenticación
+
+*Services donde se almacenan interfaces que sirven de contrato para los métodos de la api, y por otro lado 
+las clases donde se realiza toda la lógica y procesamiento de la data.
+
+*Security donde se almacena la clase que nos hace las validaciones necesarias para la basic Auth al momento de
+querer consumir la api con sus diversos métodos.
+
+*Controllers donde se invocan los métodos y definen los parametros que deben enviarse en la url o request body.
+
+--Archivo JSON
+
+El archivo json que nos servira de simulación de BD se encuentra en la raiz del proyecto y lleva por nombre "Libros.json"
+y consta de 5 libros para las pruebas necesarias.
+
+--------------Ruta de Json------------------------------
+
+--Dentro de la clase LibroServices se encuentra una variable global llamada "path" que apunta a la ruta del archivo json
+esta debe ser cambiada dependiendo de donde se almacene el proyecto, esto se debe hacer antes de intentar ejecutar el api.
+
+-----------------Autenticación--------------------------
+
+--Para el consumo de la api es necesaria la autenticación, mediante postman en el apartado "autorization" en la lista desplegable
+debemos seleccionar "Basic Auth" e ingresar las siguientes credenciales Username:BasicPass@hotmail.com y Password:Prueba 
+de lo contrario nos arrojara un error de autenticación impidiendo el consumo de los métodos de la api.
+
+Estas credenciales pueden ser cambiadas en la clase UserServices contenida en la carpeta Services.
+
+-----------Uso de postman para consumo de Métodos----------
+
+--Es necesario el uso de postman o algun otro software similar donde podamos probar los métodos esto mediante la url especifica
+para cada método, se debe ejecutar el proyecto y posteriormente ingresar las urls y requerimientos que se indican a continuación.
+
+---------------Método BuscaLibro-----------------------
+
+--Para el uso del método de busqueda de un libro por author, bookName o releaseDate se debe ingresar la siguiente url y seleccionar
+en postman el tipo de método GET.
+
+https://localhost:7083/api/Libro/{Parametro} siendo el numero 7083 el puerto que defina VS y {parametro} el author, bookName o releaseDate 
+que se enviarian.
+
+Si el libro existe nos devolvera la información, caso contrario nos dira que no existe.
+
+
+------------Método ModificaLibro-------------------------
+--Para el uso del método de modificación de un libro por author, bookName o releaseDate se debe ingresar la siguiente url y seleccionar
+en postman el tipo de método PUT.
+
+https://localhost:7083/api/Libro/{Parametro} siendo el numero 7083 el puerto que defina VS y {parametro} el author, bookName o releaseDate 
+que se enviarian para la busqueda del libro a modificar, adicional a esto en el apartado "Body" de postan debemos seleccionar "Raw"
+y en la lista deplegable seleccionar "Json" y pegar la información del libro ya modificada con el siguiente formato:
+ {
+   "bookName": "Título del libro",
+   "author": "Autor del libro",
+   "releaseDate": "2022-08-09"    <------------Esta fecha es un mero ejemplo 
+ }
+
+Si el libro que buscamos modificar existe y mandamos correctamente el request body nos actualizara la información en el json, caso
+contrario nos arrojara un mensaje de error
+
+-----------------Método EliminaLibro------------------------
+--Para el uso del método de eliminación de un libro por author, bookName o releaseDate se debe ingresar la siguiente url y seleccionar
+en postman el tipo de método DELETE.
+
+https://localhost:7083/api/Libro/{Parametro} siendo el numero 7083 el puerto que defina VS y {parametro} el author, bookName o releaseDate 
+que se enviarian para la busqueda del libro a eliminar.
+
+Si el parametro enviado es valido nos arrojara un mensaje con el libro borrado, caso contrario nos dira que el libro no existe.
+
+-----------------Método EliminaLibro------------------------
+--Para el uso del método de eliminación de un libro por author, bookName o releaseDate se debe ingresar la siguiente url y seleccionar
+en postman el tipo de método DELETE.
+
+https://localhost:7083/api/Libro/{Parametro} siendo el numero 7083 el puerto que defina VS y {parametro} el author, bookName o releaseDate 
+que se enviarian para la busqueda del libro a eliminar.
+
+Si el parametro enviado es valido nos arrojara un mensaje con el libro borrado, caso contrario nos dira que el libro no existe.
+
+---------------Método AgregarLibro------------------------
+--Para el uso del método de agregar un libro se debe ingresar la siguiente url y seleccionar
+en postman el tipo de método POST.
+
+https://localhost:7083/api/Libro siendo el numero 7083 el puerto que defina VS
+
+En el apartado "Body" de postan debemos seleccionar "Raw"
+y en la lista deplegable seleccionar "Json" y pegar la información del libro a agregar con el siguiente formato:
+ {
+   "bookName": "Título del libro",
+   "author": "Autor del libro",
+   "releaseDate": "2022-08-09"    <------------Esta fecha es un mero ejemplo 
+ }
+
+Si el request body es correcto nos arrojara la información del libro anexado y se actualizará el archivo json, caso contrario
+nos arrojara un mensaje de error.
+
+
+
